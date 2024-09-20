@@ -52,10 +52,10 @@ namespace OnEstPasBenevole
                 int y = GraphicsDevice.Viewport.Height / 2;
                 texte = new Texte(spriteFont, "0 €", new Vector2(x, y), Color.Black, 24);
             }
-            Init(Content);
+            Init(Content, GraphicsDevice);
         }
 
-        public void Init(ContentManager Content)
+        public void Init(ContentManager Content, GraphicsDevice GraphicsDevice)
         {
             using (var stream = TitleContainer.OpenStream("Content/data.txt"))
             using (var reader = new StreamReader(stream))
@@ -98,51 +98,56 @@ namespace OnEstPasBenevole
                 }
             }
 
-            Calcul();
+            Calcul(GraphicsDevice);
 
 
         }
 
-        public void Calcul()
+        public void Calcul(GraphicsDevice GraphicsDevice)
         {
             DateTime now = DateTime.Now;
 
-            if (!IsWorkingHours(now))
+
+            float dailySalary = salaireParMois / 30;
+            int workingSecondsPerDay = 7 * 60 * 60;
+            salaireParSeconde = dailySalary / workingSecondsPerDay;
+
+            DateTime startDateTime = new DateTime(dateDebut.annee, dateDebut.mois, dateDebut.jour, 0, 0, 0);
+            DateTime endDateTime = now;
+
+            int totalWorkingSeconds = 0;
+
+            while (startDateTime < endDateTime)
             {
-                float dailySalary = salaireParMois / 30;
-                int workingSecondsPerDay = 7 * 60 * 60;
-                salaireParSeconde = dailySalary / workingSecondsPerDay;
-
-                DateTime startDateTime = new DateTime(dateDebut.annee, dateDebut.mois, dateDebut.jour, 9, 0, 0);
-                DateTime endDateTime = now;
-
-                int totalWorkingSeconds = 0;
-
-                while (startDateTime < endDateTime)
+                if (IsWorkingHours(startDateTime))
                 {
-                    if (IsWorkingHours(startDateTime))
-                    {
-                        totalWorkingSeconds++;
-                    }
-                    startDateTime = startDateTime.AddSeconds(1);
+                    totalWorkingSeconds++;
                 }
-
-                DateTime startOfDay = new DateTime(now.Year, now.Month, now.Day, 9, 0, 0);
-                int workingSecondsToday = 0;
-                while (startOfDay < now)
-                {
-                    if (IsWorkingHours(startOfDay))
-                    {
-                        workingSecondsToday++;
-                    }
-                    startOfDay = startOfDay.AddSeconds(1);
-                }
-
-                int secondSinceStart = totalWorkingSeconds + workingSecondsToday;
-
-                TotalGagner = salaireParSeconde * (float)secondSinceStart;
+                startDateTime = startDateTime.AddSeconds(1);
             }
 
+            DateTime startOfDay = new DateTime(now.Year, now.Month, now.Day, 9, 0, 0);
+            int workingSecondsToday = 0;
+            while (startOfDay < now)
+            {
+                if (IsWorkingHours(startOfDay))
+                {
+                    workingSecondsToday++;
+                }
+                startOfDay = startOfDay.AddSeconds(1);
+            }
+
+            int secondSinceStart = totalWorkingSeconds + workingSecondsToday;
+
+            TotalGagner = salaireParSeconde * (float)secondSinceStart;
+
+
+            elapsedTime = TimeSpan.Zero;
+
+            TotalGagner = (float)Math.Round(TotalGagner + salaireParSeconde, 5);
+            string text = TotalGagner.ToString("0.0000") + " €";
+            texte.Content = text;
+            texte.Update(GraphicsDevice);
             elapsedTime = TimeSpan.Zero;
         }
 
@@ -150,7 +155,6 @@ namespace OnEstPasBenevole
         {
             try
             {
-                // Utiliser le répertoire de base de l'application
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string contentDirectory = Path.Combine(baseDirectory, "Content");
 
@@ -207,17 +211,25 @@ namespace OnEstPasBenevole
 
         public void Update(GameTime gameTime, GraphicsDevice GraphicsDevice)
         {
-            elapsedTime += gameTime.ElapsedGameTime;
-
-            if (elapsedTime.TotalSeconds >= 1)
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
-                TotalGagner = (float)Math.Round(TotalGagner + salaireParSeconde, 5);
-                string text = TotalGagner.ToString("0.0000") + " €";
-                texte.Content = text;
-                texte.Update(GraphicsDevice);
-
-                elapsedTime = TimeSpan.Zero;
+                Save();
             }
+            if (IsWorkingHours(DateTime.Now))
+            {
+                elapsedTime += gameTime.ElapsedGameTime;
+
+                if (elapsedTime.TotalSeconds >= 1)
+                {
+                    TotalGagner = (float)Math.Round(TotalGagner + salaireParSeconde, 5);
+                    string text = TotalGagner.ToString("0.0000") + " €";
+                    texte.Content = text;
+                    texte.Update(GraphicsDevice);
+
+                    elapsedTime = TimeSpan.Zero;
+                }
+            }
+
         }
 
         public void Draw(SpriteBatch spriteBatch)

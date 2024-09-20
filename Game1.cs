@@ -51,9 +51,13 @@ public class Game1 : Game
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+        {
+            money.Save();
             Exit();
-        money.Save()
-        ;
+        }
+
+
+
 
         money.Update(gameTime, GraphicsDevice);
 
