@@ -22,9 +22,12 @@ public class Game1 : Game
 
         _graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
         _graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+        _graphics.ApplyChanges();
+
         Window.AllowUserResizing = true;
 
-        money = new Money(new Date(1, 1, 2021), 1000);
+        money = new Money(new Date(1, 9, 2024), 850.5f);
     }
 
     protected override void Initialize()
@@ -49,8 +52,12 @@ public class Game1 : Game
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
+        money.Save()
+        ;
 
-        money.Update(GraphicsDevice);
+        money.Update(gameTime, GraphicsDevice);
+
+        Console.WriteLine(money.totalGagner);
 
         base.Update(gameTime);
     }

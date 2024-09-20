@@ -30,3 +30,7 @@ C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\bin\Debug\net8.0\Content\Arial.x
 C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\bin\Debug\net8.0\Content\bin\DesktopGL\Content\Arial.xnb
 C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\bin\Debug\net8.0\Content\obj\DesktopGL\net8.0\Content\.mgcontent
 C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\bin\Debug\net8.0\Content\obj\DesktopGL\net8.0\Content\Arial.mgcontent
+C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\obj\Debug\net8.0\OnEstPasBenevole.sourcelink.json
+C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\bin\Debug\net8.0\Content\data.txt
+C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\bin\Debug\net8.0\Content\dateDebut.txt
+C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\bin\Debug\net8.0\Content\salaireParMois.txt

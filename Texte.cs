@@ -26,13 +26,11 @@ namespace OnEstPasBenevole
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Vector2 textSize = _font.MeasureString(_text) * (_size / 12f);
-
-            Vector2 adjustedPosition = new Vector2(_position.X - textSize.X / 2, _position.Y - textSize.Y / 2);
-
-            spriteBatch.DrawString(_font, _text, adjustedPosition, _color, 0, Vector2.Zero, _size / 12f, SpriteEffects.None, 0);
+            Vector2 textSize = _font.MeasureString(_text);
+            Vector2 adjustedPosition = new Vector2(_position.X - textSize.X / 3, _position.Y - textSize.Y / 2);
+            Console.WriteLine(_text);
+            spriteBatch.DrawString(_font, _text, adjustedPosition, _color, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }
-
         public void Update(GraphicsDevice GraphicsDevice)
         {
             int screenWidth = GraphicsDevice.Viewport.Width;
@@ -43,6 +41,7 @@ namespace OnEstPasBenevole
             Size = (int)newSize;
 
             Position = new Vector2(screenWidth / 2, screenHeight / 2);
+
 
         }
 
