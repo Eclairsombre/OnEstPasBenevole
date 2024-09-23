@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace OnEstPasBenevole
+namespace OnEstPasBenevole.src.Interface
 {
     public enum MenuState
     {
@@ -13,12 +13,12 @@ namespace OnEstPasBenevole
     }
     public class Menu
     {
-        private Bouton StartButton;
-        private Bouton OptionsButton;
+        private readonly Bouton StartButton;
+        private readonly Bouton OptionsButton;
 
         private Money money;
 
-        private Option option;
+        private readonly Option option;
 
         public Option Option { get { return option; } }
 
@@ -71,7 +71,7 @@ namespace OnEstPasBenevole
                     {
                         State = MenuState.Main;
                     }
-                    option.Update(gameTime, ref money, Content, GraphicsDevice);
+                    option.Update(ref money, Content, GraphicsDevice);
                     break;
                 case MenuState.Money:
                     if (keyboardState.IsKeyDown(Keys.Escape))
@@ -91,7 +91,7 @@ namespace OnEstPasBenevole
                     OptionsButton.Draw(spriteBatch);
                     break;
                 case MenuState.Options:
-                    option.Draw(spriteBatch, spriteFont);
+                    option.Draw(spriteBatch);
                     break;
                 case MenuState.Money:
                     money.Draw(spriteBatch);

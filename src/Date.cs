@@ -1,13 +1,6 @@
-public class Date
+public class Date(int jour, int mois, int annee)
 {
-    public int jour;
-    public int mois;
-    public int annee;
-
-    public Date(int jour, int mois, int annee)
-    {
-        this.jour = jour;
-        this.mois = mois;
-        this.annee = annee;
-    }
+    public int jour = jour;
+    public int mois = mois;
+    public int annee = annee;
 }

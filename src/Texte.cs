@@ -1,13 +1,12 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
-namespace OnEstPasBenevole
+namespace OnEstPasBenevole.src
 {
     public class Texte(SpriteFont font, string text, Vector2 position, Color color, int size = 12)
     {
-        private SpriteFont _font = font;
+        private readonly SpriteFont _font = font;
         private string _text = text;
         private Vector2 _position = position;
         private Color _color = color;
@@ -18,10 +17,6 @@ namespace OnEstPasBenevole
         {
             Vector2 textSize = _font.MeasureString(_text);
             Vector2 adjustedPosition = new(_position.X - textSize.X / 3, _position.Y - textSize.Y / 2);
-
-
-
-            //Console.WriteLine(_text);
             spriteBatch.DrawString(_font, _text, adjustedPosition, _color, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }
         public void Update(GraphicsDevice GraphicsDevice)
@@ -32,10 +27,7 @@ namespace OnEstPasBenevole
 
             float newSize = Math.Min(screenWidth / (textLength * 10), screenHeight / 10);
             Size = (int)newSize;
-
             Position = new Vector2(screenWidth / 2, screenHeight / 2);
-
-
         }
 
         public string Content
@@ -56,12 +48,5 @@ namespace OnEstPasBenevole
             get { return _size; }
             set { _size = value; }
         }
-
-
-
-
-
-
-
     }
 }

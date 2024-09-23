@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace OnEstPasBenevole
+namespace OnEstPasBenevole.src
 {
     public class Money
     {
@@ -20,7 +20,7 @@ namespace OnEstPasBenevole
 
         private TimeSpan elapsedTime = TimeSpan.Zero;
 
-        private int nbApresVirgule;
+        private readonly int nbApresVirgule;
 
         private double salaireAnnee1;
         private double salaireAnnee2;
@@ -157,7 +157,7 @@ namespace OnEstPasBenevole
         }
 
 
-        private bool IsWorkingHours(DateTime now)
+        private static bool IsWorkingHours(DateTime now)
         {
             if (now.DayOfWeek < DayOfWeek.Monday || now.DayOfWeek > DayOfWeek.Friday)
             {

@@ -6,28 +6,17 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace OnEstPasBenevole
+namespace OnEstPasBenevole.src.Interface
 {
-    public class Option
+    public class Option(SpriteFont spriteFont)
     {
-        private TextBox dateDebutTextBox;
-        private TextBox salaireAnnee1TextBox;
-        private TextBox salaireAnnee2TextBox;
-        private TextBox salaireAnnee3TextBox;
-        private Bouton validerButton;
+        private readonly TextBox dateDebutTextBox = new TextBox(new Vector2(500, 200), "JJ/MM/AAAA", spriteFont);
+        private readonly TextBox salaireAnnee1TextBox = new TextBox(new Vector2(500, 300), "Salaire Annee 1", spriteFont);
+        private readonly TextBox salaireAnnee2TextBox = new TextBox(new Vector2(500, 400), "Salaire Annee 2", spriteFont);
+        private readonly TextBox salaireAnnee3TextBox = new TextBox(new Vector2(500, 500), "Salaire Annee 3", spriteFont);
+        private readonly Bouton validerButton = new Bouton(spriteFont, "Valider", 500, 600, 300, 50);
 
         private const string SaveFilePath = "data.txt";
-
-
-        public Option(SpriteFont spriteFont)
-        {
-            // Initialiser les champs de saisie et les boutons
-            dateDebutTextBox = new TextBox(new Vector2(500, 200), "JJ/MM/AAAA", spriteFont);
-            salaireAnnee1TextBox = new TextBox(new Vector2(500, 300), "Salaire Annee 1", spriteFont);
-            salaireAnnee2TextBox = new TextBox(new Vector2(500, 400), "Salaire Annee 2", spriteFont);
-            salaireAnnee3TextBox = new TextBox(new Vector2(500, 500), "Salaire Annee 3", spriteFont);
-            validerButton = new Bouton(spriteFont, "Valider", 500, 600, 300, 50);
-        }
 
         public void LoadData(ref Money money, ContentManager Content, GraphicsDevice GraphicsDevice)
         {
@@ -87,12 +76,12 @@ namespace OnEstPasBenevole
             }
         }
 
-        public void Update(GameTime gameTime, ref Money money, ContentManager Content, GraphicsDevice GraphicsDevice)
+        public void Update(ref Money money, ContentManager Content, GraphicsDevice GraphicsDevice)
         {
-            dateDebutTextBox.Update(gameTime);
-            salaireAnnee1TextBox.Update(gameTime);
-            salaireAnnee2TextBox.Update(gameTime);
-            salaireAnnee3TextBox.Update(gameTime);
+            dateDebutTextBox.Update();
+            salaireAnnee1TextBox.Update();
+            salaireAnnee2TextBox.Update();
+            salaireAnnee3TextBox.Update();
 
             if (validerButton.IsClicked())
             {
@@ -123,16 +112,10 @@ namespace OnEstPasBenevole
                 Date dateDebutObj = new(dateDebut.Day, dateDebut.Month, dateDebut.Year);
                 money = new Money(dateDebutObj, salaireAnnee1, salaireAnnee2, salaireAnnee3);
                 money.Init(Content, GraphicsDevice);
-
-                Console.WriteLine("Date de debut: " + dateDebutObj.jour + "/" + dateDebutObj.mois + "/" + dateDebutObj.annee);
-                Console.WriteLine("Salaire annee 1: " + salaireAnnee1);
-                Console.WriteLine("Salaire annee 2: " + salaireAnnee2);
-                Console.WriteLine("Salaire annee 3: " + salaireAnnee3);
-                Console.WriteLine("Total gagner: " + money.TotalGagner);
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, SpriteFont spriteFont)
+        public void Draw(SpriteBatch spriteBatch)
         {
             dateDebutTextBox.Draw(spriteBatch);
             salaireAnnee1TextBox.Draw(spriteBatch);

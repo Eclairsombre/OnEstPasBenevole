@@ -4,13 +4,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 
-namespace OnEstPasBenevole
+namespace OnEstPasBenevole.src.Interface
 {
     public class Bouton
     {
-        private Texte texte;
+        private readonly Texte texte;
 
-        private int x, y, width, height;
+        private readonly int x, y, width, height;
 
         public Bouton(SpriteFont spriteFont, string texte, int x, int y, int width, int height)
         {
@@ -42,28 +42,20 @@ namespace OnEstPasBenevole
 
     }
 
-    public class TextBox
+    public class TextBox(Vector2 position, string placeholder, SpriteFont font)
     {
-        private Vector2 position;
-        private string placeholder;
+        private Vector2 position = position;
+        readonly string placeholder = placeholder;
         private bool isActive;
-        private SpriteFont font;
+        readonly SpriteFont font = font;
 
-        private Texte texte;
+        private readonly Texte texte = new(font, placeholder, position, Color.Black, 24);
 
         public string Text { get { return texte.Content; } set { texte.Content = value; } }
 
-        public TextBox(Vector2 position, string placeholder, SpriteFont font)
-        {
-            texte = new Texte(font, placeholder, position, Color.Black, 24);
-            this.position = position;
-            this.placeholder = placeholder;
-            this.font = font;
-        }
-
         private KeyboardState previousKeyboardState;
 
-        public void Update(GameTime gameTime)
+        public void Update()
         {
             var currentKeyboardState = Keyboard.GetState();
 
@@ -73,7 +65,7 @@ namespace OnEstPasBenevole
                 {
                     if (key == Keys.Back && texte.Content != null && texte.Content.Length > 0 && previousKeyboardState.IsKeyUp(Keys.Back))
                     {
-                        texte.Content = texte.Content.Substring(0, texte.Content.Length - 1);
+                        texte.Content = texte.Content[..^1];
                     }
                     else if (key != Keys.Back && previousKeyboardState.IsKeyUp(key))
                     {
@@ -87,7 +79,6 @@ namespace OnEstPasBenevole
                 }
             }
 
-            // Gérer l'activation du champ de saisie
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
                 Rectangle textBoxRect = new((int)position.X, (int)position.Y, 200, 30);
@@ -105,62 +96,52 @@ namespace OnEstPasBenevole
             previousKeyboardState = currentKeyboardState;
         }
 
-        private char GetCharFromKey(Keys key)
+        private static char GetCharFromKey(Keys key)
         {
             Console.WriteLine(key);
-            switch (key)
+            return key switch
             {
-                case Keys.A: return 'A';
-                case Keys.B: return 'B';
-                case Keys.C: return 'C';
-                case Keys.D: return 'D';
-                case Keys.E: return 'E';
-                case Keys.F: return 'F';
-                case Keys.G: return 'G';
-                case Keys.H: return 'H';
-                case Keys.I: return 'I';
-                case Keys.J: return 'J';
-                case Keys.K: return 'K';
-                case Keys.L: return 'L';
-                case Keys.M: return 'M';
-                case Keys.N: return 'N';
-                case Keys.O: return 'O';
-                case Keys.P: return 'P';
-                case Keys.Q: return 'Q';
-                case Keys.R: return 'R';
-                case Keys.S: return 'S';
-                case Keys.T: return 'T';
-                case Keys.U: return 'U';
-                case Keys.V: return 'V';
-                case Keys.W: return 'W';
-                case Keys.X: return 'X';
-                case Keys.Y: return 'Y';
-                case Keys.Z: return 'Z';
-                case Keys.Space: return ' ';
-                case Keys.D0:
-                case Keys.NumPad0: return '0';
-                case Keys.D1:
-                case Keys.NumPad1: return '1';
-                case Keys.D2:
-                case Keys.NumPad2: return '2';
-                case Keys.D3:
-                case Keys.NumPad3: return '3';
-                case Keys.D4:
-                case Keys.NumPad4: return '4';
-                case Keys.D5:
-                case Keys.NumPad5: return '5';
-                case Keys.D6:
-                case Keys.NumPad6: return '6';
-                case Keys.D7:
-                case Keys.NumPad7: return '7';
-                case Keys.D8:
-                case Keys.NumPad8: return '8';
-                case Keys.D9:
-                case Keys.NumPad9: return '9';
-                case Keys.Divide: return '/';
-                case Keys.OemComma: return ',';
-                default: return '\0';
-            }
+                Keys.A => 'A',
+                Keys.B => 'B',
+                Keys.C => 'C',
+                Keys.D => 'D',
+                Keys.E => 'E',
+                Keys.F => 'F',
+                Keys.G => 'G',
+                Keys.H => 'H',
+                Keys.I => 'I',
+                Keys.J => 'J',
+                Keys.K => 'K',
+                Keys.L => 'L',
+                Keys.M => 'M',
+                Keys.N => 'N',
+                Keys.O => 'O',
+                Keys.P => 'P',
+                Keys.Q => 'Q',
+                Keys.R => 'R',
+                Keys.S => 'S',
+                Keys.T => 'T',
+                Keys.U => 'U',
+                Keys.V => 'V',
+                Keys.W => 'W',
+                Keys.X => 'X',
+                Keys.Y => 'Y',
+                Keys.Z => 'Z',
+                Keys.Space => ' ',
+                Keys.D0 or Keys.NumPad0 => '0',
+                Keys.D1 or Keys.NumPad1 => '1',
+                Keys.D2 or Keys.NumPad2 => '2',
+                Keys.D3 or Keys.NumPad3 => '3',
+                Keys.D4 or Keys.NumPad4 => '4',
+                Keys.D5 or Keys.NumPad5 => '5',
+                Keys.D6 or Keys.NumPad6 => '6',
+                Keys.D7 or Keys.NumPad7 => '7',
+                Keys.D8 or Keys.NumPad8 => '8',
+                Keys.D9 or Keys.NumPad9 => '9',
+                Keys.Divide => '/',
+                Keys.OemComma => ',',
+                _ => '\0',
+            };
         }
 
         public void Draw(SpriteBatch spriteBatch)
