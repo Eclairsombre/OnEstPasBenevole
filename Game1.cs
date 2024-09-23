@@ -12,7 +12,9 @@ public class Game1 : Game
 
 
 
-    Money money;
+    private readonly Money money;
+
+    private Menu menu;
 
     public Game1()
     {
@@ -27,15 +29,15 @@ public class Game1 : Game
 
         Window.AllowUserResizing = true;
 
-        money = new Money(new Date(1, 9, 2024), 850.5f);
+        menu = new Menu(Content.Load<SpriteFont>("Arial"), GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+
     }
 
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
 
-        money.LoadContent(Content, GraphicsDevice);
-
+        menu.LoadContent(Content, GraphicsDevice);
         base.Initialize();
     }
 
@@ -59,9 +61,7 @@ public class Game1 : Game
 
 
 
-        money.Update(gameTime, GraphicsDevice);
-
-        Console.WriteLine(money.totalGagner);
+        menu.Update(gameTime, GraphicsDevice);
 
         base.Update(gameTime);
     }
@@ -71,7 +71,7 @@ public class Game1 : Game
         GraphicsDevice.Clear(Color.White);
 
         _spriteBatch.Begin();
-        money.Draw(_spriteBatch);
+        menu.Draw(_spriteBatch);
         _spriteBatch.End();
 
         base.Draw(gameTime);

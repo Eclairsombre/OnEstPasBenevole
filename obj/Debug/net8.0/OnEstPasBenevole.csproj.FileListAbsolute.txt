@@ -34,3 +34,4 @@ C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\obj\Debug\net8.0\OnEstPasBenevol
 C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\bin\Debug\net8.0\Content\data.txt
 C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\bin\Debug\net8.0\Content\dateDebut.txt
 C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\bin\Debug\net8.0\Content\salaireParMois.txt
+C:\Users\alext\OneDrive\Bureau\OnEstPasBenevole\bin\Debug\net8.0\MonoGame.Extended.dll

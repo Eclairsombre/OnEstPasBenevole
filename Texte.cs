@@ -28,7 +28,7 @@ namespace OnEstPasBenevole
         {
             Vector2 textSize = _font.MeasureString(_text);
             Vector2 adjustedPosition = new Vector2(_position.X - textSize.X / 3, _position.Y - textSize.Y / 2);
-            Console.WriteLine(_text);
+            //Console.WriteLine(_text);
             spriteBatch.DrawString(_font, _text, adjustedPosition, _color, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }
         public void Update(GraphicsDevice GraphicsDevice)

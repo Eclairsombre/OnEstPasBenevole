@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended;
 
 namespace OnEstPasBenevole
 {
@@ -16,25 +17,31 @@ namespace OnEstPasBenevole
 
         private float salaireParMois;
 
-        private float salaireParSeconde;
+        private double salaireParSeconde;
 
-        private float TotalGagner;
+        private double salaireParDixiemeSeconde;
+
+        private double TotalGagner;
 
         private TimeSpan elapsedTime = TimeSpan.Zero;
         private string fileContent;
 
-        public float totalGagner
+        private int nbApresVirgule;
+
+        public double totalGagner
         {
             get { return TotalGagner; }
             set { TotalGagner = value; }
         }
 
-        public Money(Date dateDebut, float salaireParMois, float TotalGagner = 0)
+        public Money(Date dateDebut, float salaireParMois, float TotalGagner = 0, int nbApresVirgule = 4)
         {
             this.dateDebut = dateDebut;
             this.salaireParMois = salaireParMois;
 
             this.TotalGagner = TotalGagner;
+
+            this.nbApresVirgule = nbApresVirgule;
 
 
         }
@@ -139,13 +146,16 @@ namespace OnEstPasBenevole
 
             int secondSinceStart = totalWorkingSeconds + workingSecondsToday;
 
-            TotalGagner = salaireParSeconde * (float)secondSinceStart;
+            TotalGagner = salaireParSeconde * (double)secondSinceStart;
+
+            salaireParDixiemeSeconde = salaireParSeconde / 10;
 
 
             elapsedTime = TimeSpan.Zero;
 
-            TotalGagner = (float)Math.Round(TotalGagner + salaireParSeconde, 5);
-            string text = TotalGagner.ToString("0.0000") + " €";
+            TotalGagner = (float)Math.Round(TotalGagner + salaireParSeconde, nbApresVirgule);
+            string nbApresVirguleString = "0." + new string('0', nbApresVirgule);
+            string text = TotalGagner.ToString(nbApresVirguleString) + " €";
             texte.Content = text;
             texte.Update(GraphicsDevice);
             elapsedTime = TimeSpan.Zero;
@@ -219,21 +229,23 @@ namespace OnEstPasBenevole
             {
                 elapsedTime += gameTime.ElapsedGameTime;
 
-                if (elapsedTime.TotalSeconds >= 1)
+                if (elapsedTime.TotalSeconds >= 0.1)
                 {
-                    TotalGagner = (float)Math.Round(TotalGagner + salaireParSeconde, 5);
-                    string text = TotalGagner.ToString("0.0000") + " €";
+                    TotalGagner = (float)Math.Round(TotalGagner + salaireParDixiemeSeconde, nbApresVirgule);
+                    string nbApresVirguleString = "0." + new string('0', nbApresVirgule);
+                    Console.WriteLine(nbApresVirgule);
+                    string text = TotalGagner.ToString(nbApresVirguleString) + " €";
                     texte.Content = text;
                     texte.Update(GraphicsDevice);
 
                     elapsedTime = TimeSpan.Zero;
                 }
             }
-
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+
             texte.Draw(spriteBatch);
         }
 
