@@ -150,10 +150,6 @@ namespace OnEstPasBenevole.src
             texte.Update(GraphicsDevice);
             elapsedTime = TimeSpan.Zero;
 
-            Console.WriteLine($"Total gagner: {totalGagner}");
-            Console.WriteLine($"Salaire par seconde: {salaireParSeconde}");
-            Console.WriteLine($"Salaire par dixieme de seconde: {salaireParDixiemeSeconde}");
-            Console.WriteLine($"Total working seconds: {totalWorkingSeconds}");
         }
 
 

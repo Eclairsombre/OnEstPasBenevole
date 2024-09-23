@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj": {}
+    "c:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj": {
+    "c:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj",
+        "projectUniqueName": "c:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj",
         "projectName": "OnEstPasBenevole",
-        "projectPath": "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj",
+        "projectPath": "c:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj",
         "packagesPath": "C:\\Users\\alext\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\obj\\",
+        "outputPath": "c:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alext\\AppData\\Roaming\\NuGet\\NuGet.Config"

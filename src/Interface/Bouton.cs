@@ -98,7 +98,6 @@ namespace OnEstPasBenevole.src.Interface
 
         private static char GetCharFromKey(Keys key)
         {
-            Console.WriteLine(key);
             return key switch
             {
                 Keys.A => 'A',
