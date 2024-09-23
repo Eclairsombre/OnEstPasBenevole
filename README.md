@@ -1,6 +1,8 @@
 # OnEstPasBenevole
 
 Un calculateur en temps réel de l'argent gagné avec votre alternance.
+C'est calculé sur une période de 9h - 17h, du lundi au vendredi.
+En dehors de cette période le compteur n'avance pas.
 
 ## Windows
 
