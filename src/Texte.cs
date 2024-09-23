@@ -10,7 +10,6 @@ namespace OnEstPasBenevole.src
         private string _text = text;
         private Vector2 _position = position;
         private Color _color = color;
-
         private int _size = size;
 
         public void Draw(SpriteBatch spriteBatch)

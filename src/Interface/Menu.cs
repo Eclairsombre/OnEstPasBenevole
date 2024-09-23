@@ -13,8 +13,8 @@ namespace OnEstPasBenevole.src.Interface
     }
     public class Menu
     {
-        private readonly Bouton StartButton;
-        private readonly Bouton OptionsButton;
+        private readonly Bouton startButton;
+        private readonly Bouton optionsButton;
 
         private Money money;
 
@@ -24,7 +24,9 @@ namespace OnEstPasBenevole.src.Interface
 
         public MenuState State { get; set; }
 
-        private readonly SpriteFont spriteFont;
+        readonly SpriteFont spriteFont;
+
+        private Texte titre;
 
 
 
@@ -33,8 +35,8 @@ namespace OnEstPasBenevole.src.Interface
         public Menu(SpriteFont spriteFont, int screenWidth, int screenHeight)
         {
             Vector2 position = new(screenWidth / 2, screenHeight / 2);
-            StartButton = new Bouton(spriteFont, "Start", (int)position.X - 100, (int)position.Y - 100, 300, 100);
-            OptionsButton = new Bouton(spriteFont, "Options", (int)position.X - 100, (int)position.Y, 300, 100);
+            startButton = new Bouton(spriteFont, "Start", (int)position.X - 100, (int)position.Y - 100, 300, 100);
+            optionsButton = new Bouton(spriteFont, "Options", (int)position.X - 100, (int)position.Y, 300, 100);
 
             this.spriteFont = spriteFont;
             State = MenuState.Main;
@@ -42,6 +44,8 @@ namespace OnEstPasBenevole.src.Interface
             money = new Money();
 
             option = new Option(spriteFont);
+
+            titre = new Texte(spriteFont, "ON EST PAS BENEVOLE", new Vector2(screenWidth / 2 - 60, 200), Color.Black, 24);
 
         }
 
@@ -57,11 +61,11 @@ namespace OnEstPasBenevole.src.Interface
             switch (State)
             {
                 case MenuState.Main:
-                    if (StartButton.IsClicked())
+                    if (startButton.IsClicked())
                     {
                         State = MenuState.Money;
                     }
-                    if (OptionsButton.IsClicked())
+                    if (optionsButton.IsClicked())
                     {
                         State = MenuState.Options;
                     }
@@ -71,7 +75,9 @@ namespace OnEstPasBenevole.src.Interface
                     {
                         State = MenuState.Main;
                     }
-                    option.Update(ref money, Content, GraphicsDevice);
+                    MenuState currentState = State;
+                    option.Update(ref money, Content, GraphicsDevice, ref currentState);
+                    State = currentState;
                     break;
                 case MenuState.Money:
                     if (keyboardState.IsKeyDown(Keys.Escape))
@@ -87,8 +93,9 @@ namespace OnEstPasBenevole.src.Interface
             switch (State)
             {
                 case MenuState.Main:
-                    StartButton.Draw(spriteBatch);
-                    OptionsButton.Draw(spriteBatch);
+                    titre.Draw(spriteBatch);
+                    startButton.Draw(spriteBatch);
+                    optionsButton.Draw(spriteBatch);
                     break;
                 case MenuState.Options:
                     option.Draw(spriteBatch);
@@ -97,6 +104,7 @@ namespace OnEstPasBenevole.src.Interface
                     money.Draw(spriteBatch);
                     break;
             }
+
         }
 
     }

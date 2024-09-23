@@ -81,8 +81,8 @@ namespace OnEstPasBenevole.src.Interface
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
-                Rectangle textBoxRect = new((int)position.X, (int)position.Y, 200, 30);
-                if (textBoxRect.Contains(Mouse.GetState().Position))
+                Rectangle rectangle = new((int)position.X - 200, (int)position.Y - 50, 600, 100);
+                if (rectangle.Contains(Mouse.GetState().Position))
                 {
                     isActive = true;
                     texte.Content = "";
@@ -146,7 +146,7 @@ namespace OnEstPasBenevole.src.Interface
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle rectangle = new((int)position.X, (int)position.Y, 200, 30);
+            Rectangle rectangle = new((int)position.X - 200, (int)position.Y - 50, 600, 100);
             spriteBatch.DrawRectangle(rectangle, Color.Black);
             texte.Draw(spriteBatch);
         }
