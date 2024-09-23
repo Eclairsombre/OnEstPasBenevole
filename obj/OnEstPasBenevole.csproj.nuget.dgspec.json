@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj": {}
+    "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj": {}
   },
   "projects": {
-    "c:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj": {
+    "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj",
+        "projectUniqueName": "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj",
         "projectName": "OnEstPasBenevole",
-        "projectPath": "c:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj",
+        "projectPath": "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj",
         "packagesPath": "C:\\Users\\alext\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\obj\\",
+        "outputPath": "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alext\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -67,12 +67,31 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[8.0.7, 8.0.7]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[8.0.7, 8.0.7]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+              "version": "[8.0.7, 8.0.7]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }

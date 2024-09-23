@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jcn6no3p2vo=",
+  "dgSpecHash": "QifR6DRVuME=",
   "success": true,
-  "projectFilePath": "c:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj",
+  "projectFilePath": "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alext\\.nuget\\packages\\monogame.content.builder.task\\3.8.2.1105\\monogame.content.builder.task.3.8.2.1105.nupkg.sha512",
     "C:\\Users\\alext\\.nuget\\packages\\monogame.extended\\4.0.2\\monogame.extended.4.0.2.nupkg.sha512",
@@ -10,7 +10,10 @@
     "C:\\Users\\alext\\.nuget\\packages\\monogame.library.sdl\\2.26.5.5\\monogame.library.sdl.2.26.5.5.nupkg.sha512",
     "C:\\Users\\alext\\.nuget\\packages\\nvorbis\\0.10.4\\nvorbis.0.10.4.nupkg.sha512",
     "C:\\Users\\alext\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\alext\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
+    "C:\\Users\\alext\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
+    "C:\\Users\\alext\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.7\\microsoft.netcore.app.runtime.win-x64.8.0.7.nupkg.sha512",
+    "C:\\Users\\alext\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.7\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.7.nupkg.sha512",
+    "C:\\Users\\alext\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.7\\microsoft.aspnetcore.app.runtime.win-x64.8.0.7.nupkg.sha512"
   ],
   "logs": []
 }

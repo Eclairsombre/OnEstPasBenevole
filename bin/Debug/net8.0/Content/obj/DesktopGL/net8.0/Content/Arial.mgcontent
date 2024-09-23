@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>c:/Users/alext/OneDrive/Bureau/OnEstPasBenevole/bin/Debug/net8.0/Content/Arial.spritefont</SourceFile>
+  <SourceFile>C:/Users/alext/OneDrive/Bureau/OnEstPasBenevole/bin/Debug/net8.0/Content/Arial.spritefont</SourceFile>
   <SourceTime>2024-09-23T18:43:29.8442165+02:00</SourceTime>
-  <DestFile>c:/Users/alext/OneDrive/Bureau/OnEstPasBenevole/bin/Debug/net8.0/Content/bin/DesktopGL/Content/Arial.xnb</DestFile>
-  <DestTime>2024-09-23T21:55:27.0601115+02:00</DestTime>
+  <DestFile>C:/Users/alext/OneDrive/Bureau/OnEstPasBenevole/bin/Debug/net8.0/Content/bin/DesktopGL/Content/Arial.xnb</DestFile>
+  <DestTime>2024-09-23T21:57:37.6742429+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
