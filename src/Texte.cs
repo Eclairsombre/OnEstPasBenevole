@@ -5,29 +5,22 @@ using Microsoft.Xna.Framework.Input;
 
 namespace OnEstPasBenevole
 {
-    public class Texte
+    public class Texte(SpriteFont font, string text, Vector2 position, Color color, int size = 12)
     {
-        private SpriteFont _font;
-        private string _text;
-        private Vector2 _position;
-        private Color _color;
+        private SpriteFont _font = font;
+        private string _text = text;
+        private Vector2 _position = position;
+        private Color _color = color;
 
-        private int _size;
-
-
-        public Texte(SpriteFont font, string text, Vector2 position, Color color, int size = 12)
-        {
-            _font = font;
-            _text = text;
-            _position = position;
-            _color = color;
-            _size = size;
-        }
+        private int _size = size;
 
         public void Draw(SpriteBatch spriteBatch)
         {
             Vector2 textSize = _font.MeasureString(_text);
-            Vector2 adjustedPosition = new Vector2(_position.X - textSize.X / 3, _position.Y - textSize.Y / 2);
+            Vector2 adjustedPosition = new(_position.X - textSize.X / 3, _position.Y - textSize.Y / 2);
+
+
+
             //Console.WriteLine(_text);
             spriteBatch.DrawString(_font, _text, adjustedPosition, _color, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }

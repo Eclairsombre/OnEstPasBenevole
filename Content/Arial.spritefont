@@ -16,6 +16,14 @@
         <End>9</End>
       </CharacterRegion>
       <CharacterRegion>
+        <Start>A</Start>
+        <End>Z</End>
+      </CharacterRegion>
+      <CharacterRegion>
+        <Start>a</Start>
+        <End>z</End>
+      </CharacterRegion>
+      <CharacterRegion>
         <Start>€</Start>
         <End>€</End>
       </CharacterRegion>

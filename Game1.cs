@@ -12,8 +12,6 @@ public class Game1 : Game
 
 
 
-    private readonly Money money;
-
     private Menu menu;
 
     public Game1()
@@ -52,16 +50,15 @@ public class Game1 : Game
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
         {
-            money.Save();
             Exit();
         }
 
 
 
 
-        menu.Update(gameTime, GraphicsDevice);
+        menu.Update(gameTime, GraphicsDevice, Content);
 
         base.Update(gameTime);
     }
@@ -75,5 +72,11 @@ public class Game1 : Game
         _spriteBatch.End();
 
         base.Draw(gameTime);
+    }
+
+    protected void OnExiting(object sender, EventArgs args)
+    {
+        menu.Option.SaveData();
+        base.OnExiting(sender, (ExitingEventArgs)args);
     }
 }

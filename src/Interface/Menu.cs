@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace OnEstPasBenevole
 {
@@ -19,24 +20,27 @@ namespace OnEstPasBenevole
 
         private Option option;
 
+        public Option Option { get { return option; } }
+
         public MenuState State { get; set; }
 
-        private Date dateDebut;
+        private readonly SpriteFont spriteFont;
 
-        double salaireAnnee1;
-        double salaireAnnee2;
-        double salaireAnnee3;
+
+
 
 
         public Menu(SpriteFont spriteFont, int screenWidth, int screenHeight)
         {
-            Vector2 position = new Vector2(screenWidth / 2, screenHeight / 2);
+            Vector2 position = new(screenWidth / 2, screenHeight / 2);
             StartButton = new Bouton(spriteFont, "Start", (int)position.X - 100, (int)position.Y - 100, 300, 100);
             OptionsButton = new Bouton(spriteFont, "Options", (int)position.X - 100, (int)position.Y, 300, 100);
 
+            this.spriteFont = spriteFont;
             State = MenuState.Main;
 
-            money = new Money(new Date(1, 9, 2024), 850.5f, 0, 4);
+            money = new Money();
+
             option = new Option(spriteFont);
 
         }
@@ -44,12 +48,12 @@ namespace OnEstPasBenevole
         public void LoadContent(ContentManager Content, GraphicsDevice GraphicsDevice)
         {
             money.LoadContent(Content, GraphicsDevice);
-
-
+            option.LoadData(ref money, Content, GraphicsDevice);
         }
 
-        public void Update(GameTime gameTime, GraphicsDevice GraphicsDevice)
+        public void Update(GameTime gameTime, GraphicsDevice GraphicsDevice, ContentManager Content)
         {
+            KeyboardState keyboardState = Keyboard.GetState();
             switch (State)
             {
                 case MenuState.Main:
@@ -63,9 +67,17 @@ namespace OnEstPasBenevole
                     }
                     break;
                 case MenuState.Options:
-                    option.Update(gameTime);
+                    if (keyboardState.IsKeyDown(Keys.Escape))
+                    {
+                        State = MenuState.Main;
+                    }
+                    option.Update(gameTime, ref money, Content, GraphicsDevice);
                     break;
                 case MenuState.Money:
+                    if (keyboardState.IsKeyDown(Keys.Escape))
+                    {
+                        State = MenuState.Main;
+                    }
                     money.Update(gameTime, GraphicsDevice);
                     break;
             }
@@ -79,7 +91,7 @@ namespace OnEstPasBenevole
                     OptionsButton.Draw(spriteBatch);
                     break;
                 case MenuState.Options:
-                    option.Draw(spriteBatch);
+                    option.Draw(spriteBatch, spriteFont);
                     break;
                 case MenuState.Money:
                     money.Draw(spriteBatch);
