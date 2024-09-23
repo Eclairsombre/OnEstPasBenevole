@@ -125,34 +125,35 @@ namespace OnEstPasBenevole.src.Interface
             if (validerButton.IsClicked())
             {
 
-                if (dateDebutTextBox.Text == "" || salaireAnnee1TextBox.Text == "" || salaireAnnee2TextBox.Text == "" || salaireAnnee3TextBox.Text == "")
+                if (dateDebutTextBox.Text != "" && dateDebutTextBox.Text != "JJ/MM/AAAA" && salaireAnnee1TextBox.Text != "" && salaireAnnee1TextBox.Text != "Salaire Annee 1")
                 {
-                    return;
-                }
-                SaveData();
-                string dateDebutStr = dateDebutTextBox.Text;
-                string salaireAnnee1Str = salaireAnnee1TextBox.Text;
-                string salaireAnnee2Str = salaireAnnee2TextBox.Text;
-                string salaireAnnee3Str = salaireAnnee3TextBox.Text;
 
-                DateTime dateDebut = DateTime.ParseExact(dateDebutStr, "dd/MM/yyyy", null);
-                float salaireAnnee1 = float.Parse(salaireAnnee1Str);
-                if (salaireAnnee2Str == "" || salaireAnnee2Str == "Salaire Annee 2")
-                {
-                    salaireAnnee2Str = "0";
-                }
-                if (salaireAnnee3Str == "" || salaireAnnee3Str == "Salaire Annee 3")
-                {
-                    salaireAnnee3Str = "0";
-                }
-                float salaireAnnee2 = float.Parse(salaireAnnee2Str);
-                float salaireAnnee3 = float.Parse(salaireAnnee3Str);
 
-                Date dateDebutObj = new(dateDebut.Day, dateDebut.Month, dateDebut.Year);
-                money = new Money(dateDebutObj, salaireAnnee1, salaireAnnee2, salaireAnnee3);
-                money.Init(Content, GraphicsDevice);
+                    SaveData();
+                    string dateDebutStr = dateDebutTextBox.Text;
+                    string salaireAnnee1Str = salaireAnnee1TextBox.Text;
+                    string salaireAnnee2Str = salaireAnnee2TextBox.Text;
+                    string salaireAnnee3Str = salaireAnnee3TextBox.Text;
 
-                Menu = MenuState.Main;
+                    DateTime dateDebut = DateTime.ParseExact(dateDebutStr, "dd/MM/yyyy", null);
+                    float salaireAnnee1 = float.Parse(salaireAnnee1Str);
+                    if (salaireAnnee2Str == "" || salaireAnnee2Str == "Salaire Annee 2")
+                    {
+                        salaireAnnee2Str = "0";
+                    }
+                    if (salaireAnnee3Str == "" || salaireAnnee3Str == "Salaire Annee 3")
+                    {
+                        salaireAnnee3Str = "0";
+                    }
+                    float salaireAnnee2 = float.Parse(salaireAnnee2Str);
+                    float salaireAnnee3 = float.Parse(salaireAnnee3Str);
+
+                    Date dateDebutObj = new(dateDebut.Day, dateDebut.Month, dateDebut.Year);
+                    money = new Money(dateDebutObj, salaireAnnee1, salaireAnnee2, salaireAnnee3);
+                    money.Init(Content, GraphicsDevice);
+
+                    Menu = MenuState.Main;
+                }
             }
         }
 
