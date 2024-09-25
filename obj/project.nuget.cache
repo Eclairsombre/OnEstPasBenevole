@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LVr94Lqqyq8=",
+  "dgSpecHash": "e1W6+hZTFak=",
   "success": true,
   "projectFilePath": "C:\\Users\\alext\\OneDrive\\Bureau\\OnEstPasBenevole\\OnEstPasBenevole.csproj",
   "expectedPackageFiles": [
@@ -10,7 +10,10 @@
     "C:\\Users\\alext\\.nuget\\packages\\monogame.library.sdl\\2.26.5.5\\monogame.library.sdl.2.26.5.5.nupkg.sha512",
     "C:\\Users\\alext\\.nuget\\packages\\nvorbis\\0.10.4\\nvorbis.0.10.4.nupkg.sha512",
     "C:\\Users\\alext\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\alext\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
+    "C:\\Users\\alext\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
+    "C:\\Users\\alext\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-x64\\8.0.7\\microsoft.netcore.app.runtime.linux-x64.8.0.7.nupkg.sha512",
+    "C:\\Users\\alext\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-x64\\8.0.7\\microsoft.aspnetcore.app.runtime.linux-x64.8.0.7.nupkg.sha512",
+    "C:\\Users\\alext\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\8.0.7\\microsoft.netcore.app.host.linux-x64.8.0.7.nupkg.sha512"
   ],
   "logs": []
 }

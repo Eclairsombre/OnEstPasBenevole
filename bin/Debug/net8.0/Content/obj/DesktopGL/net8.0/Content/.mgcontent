@@ -4,7 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/alext/OneDrive/Bureau/OnEstPasBenevole/Content/Arial.spritefont</File>
+    <File>C:/Users/alext/OneDrive/Bureau/OnEstPasBenevole/bin/Debug/net8.0/Content/Arial.spritefont</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
