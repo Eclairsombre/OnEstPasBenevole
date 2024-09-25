@@ -101,27 +101,37 @@ namespace OnEstPasBenevole.src
             {
                 currentSalaireAnnee = 0;
             }
-
-
-            double dailySalary = currentSalaireAnnee / 30;
-            int workingSecondsPerDay = 7 * 60 * 60;
-            salaireParSeconde = dailySalary / workingSecondsPerDay;
+            int totalWorkingday = 0;
 
 
             DateTime startDateTime = new(dateDebut.annee, dateDebut.mois, dateDebut.jour, 0, 0, 0);
             DateTime endDateTime = now;
 
-            int totalWorkingSeconds = 0;
-
             while (startDateTime < endDateTime)
             {
-                if (IsWorkingHours(startDateTime))
+                if (startDateTime.DayOfWeek >= DayOfWeek.Monday && startDateTime.DayOfWeek <= DayOfWeek.Friday)
                 {
-                    totalWorkingSeconds++;
+                    totalWorkingday++;
                 }
-                startDateTime = startDateTime.AddSeconds(1);
+                startDateTime = startDateTime.AddDays(1);
             }
 
+            int wokingDayInCurrentMonth = 0;
+            startDateTime = new(now.Year, now.Month, 1, 0, 0, 0);
+            endDateTime = new(now.Year, now.Month + 1, 1, 0, 0, 0);
+            while (startDateTime < endDateTime)
+            {
+                if (startDateTime.DayOfWeek >= DayOfWeek.Monday && startDateTime.DayOfWeek <= DayOfWeek.Friday)
+                {
+                    wokingDayInCurrentMonth++;
+                }
+                startDateTime = startDateTime.AddDays(1);
+            }
+
+
+            double dailySalary = currentSalaireAnnee / wokingDayInCurrentMonth;
+            int workingSecondsPerDay = 7 * 60 * 60;
+            salaireParSeconde = dailySalary / workingSecondsPerDay;
             DateTime startOfDay = new(now.Year, now.Month, now.Day, 9, 0, 0);
             int workingSecondsToday = 0;
             while (startOfDay < now)
@@ -133,7 +143,7 @@ namespace OnEstPasBenevole.src
                 startOfDay = startOfDay.AddSeconds(1);
             }
 
-            int secondSinceStart = totalWorkingSeconds + workingSecondsToday;
+            int secondSinceStart = (int)(totalWorkingday * workingSecondsPerDay + workingSecondsToday);
 
             totalGagner = salaireParSeconde * secondSinceStart;
 
